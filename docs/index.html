@@ -4,34 +4,46 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Victoria Caro · Cosmética Natural</title>
-  <meta name="description" content="Cosmética natural efectiva y honesta. Ingredientes de origen vegetal y resultados visibles. Descubre Victoria Caro." />
+  <meta name="description" content="Cosmética natural honesta y efectiva. Ingredientes de origen vegetal, fórmulas cuidadas y resultados visibles." />
   <link rel="canonical" href="https://victoriacaro.es/" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Victoria Caro · Cosmética Natural" />
-  <meta property="og:description" content="Cosmética natural efectiva y honesta." />
+  <meta property="og:description" content="Cosmética natural honesta y efectiva." />
   <meta property="og:url" content="https://victoriacaro.es/" />
   <meta property="og:image" content="https://victoriacaro.es/assets/logo.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Tailwind vía CDN (rápido para empezar) -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            brand: { dark: '#1f3d2b', coral: '#e36a5d', ivory: '#f9f8f6' }
+            brand: {
+              dark:  '#1F3D2B',   // verde principal
+              coral: '#E36A5D',   // coral/terracota
+              leaf:  '#375C3D',   // verde hoja secundario
+              brown: '#6B3D2A',   // marrón subtítulos
+              ivory: '#F9F8F6'    // marfil (fondo)
+            }
           },
-          fontFamily: { serif: ['Georgia','Times New Roman', 'serif'] }
+          fontFamily: {
+            serif: ['Georgia','Times New Roman','serif'],
+            sans:  ['Inter','ui-sans-serif','system-ui','Segoe UI','Roboto','Helvetica Neue','Arial']
+          },
+          boxShadow: {
+            card: '0 6px 24px rgba(31,61,43,.08), 0 2px 8px rgba(31,61,43,.06)'
+          }
         }
       }
     }
   </script>
   <style>
-    /* Foco visible universal */
-    :focus { outline: 2px dashed #1f3d2b; outline-offset: 2px; }
+    /* Accesibilidad: foco visible */
+    :focus { outline: 2px dashed #1F3D2B; outline-offset: 2px; }
   </style>
 
   <!-- JSON-LD Organization -->
@@ -46,61 +58,91 @@
   }
   </script>
 </head>
-<body class="bg-brand-ivory text-slate-800">
-  <!-- Enlace de salto -->
+<body class="bg-brand-ivory text-slate-800 font-sans">
+  <!-- Skip -->
   <a href="#contenido" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white px-3 py-2 rounded shadow">Saltar al contenido</a>
 
-  <!-- Header simple -->
-  <header class="w-full bg-white/80 backdrop-blur border-b border-slate-200">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-slate-200">
     <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3" aria-label="Inicio">
-        <img src="../assets/logo.png" alt="Logo Victoria Caro" class="h-10 w-auto" />
+      <a href="./" class="flex items-center gap-3" aria-label="Inicio">
+        <img src="./assets/logo.png" alt="Logo Victoria Caro" class="h-9 w-auto" />
         <span class="font-semibold text-brand-dark">Victoria Caro</span>
       </a>
       <nav aria-label="Principal">
-        <ul class="flex gap-6">
+        <ul class="hidden md:flex gap-6">
           <li><a class="hover:text-brand-coral" href="#sobre">Sobre</a></li>
           <li><a class="hover:text-brand-coral" href="#productos">Productos</a></li>
           <li><a class="hover:text-brand-coral" href="#faq">FAQ</a></li>
           <li><a class="hover:text-brand-coral" href="#contacto">Contacto</a></li>
         </ul>
       </nav>
+      <a href="#contacto" class="hidden md:inline-block rounded-full bg-brand-dark text-white px-4 py-2 text-sm hover:opacity-90">Escríbenos</a>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section id="hero" class="bg-white">
-    <div class="mx-auto max-w-6xl px-4 py-16 grid md:grid-cols-2 gap-8 items-center">
+  <!-- HERO -->
+  <section id="hero" class="relative overflow-hidden">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <!-- Degradados suaves en la marca -->
+      <div class="absolute inset-0 bg-[radial-gradient(60%_60%_at_20%_20%,#E36A5D22,transparent),radial-gradient(50%_50%_at_80%_10%,#1F3D2B14,transparent)]"></div>
+      <!-- Blob coral -->
+      <svg class="absolute -right-24 -top-24 w-[36rem] opacity-25" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path fill="#E36A5D" d="M50.3,-60.2C63.9,-51.6,72.9,-35.2,74.1,-19.1C75.3,-3,68.7,12.9,60.1,26.9C51.5,40.8,40.9,52.8,27.8,60.8C14.7,68.8,-1,72.9,-16.8,71.2C-32.5,69.5,-48.4,62,-57.8,49.3C-67.1,36.6,-69.8,18.8,-68.8,1.1C-67.9,-16.7,-63.2,-33.3,-53.1,-45.6C-43,-57.9,-27.5,-65.8,-11.3,-71C5,-76.1,21.9,-78.8,50.3,-60.2Z" transform="translate(100 100)" /></svg>
+    </div>
+
+    <div class="relative mx-auto max-w-6xl px-4 py-20 grid md:grid-cols-2 gap-10 items-center">
       <div>
         <h1 class="text-4xl md:text-5xl font-serif text-brand-dark leading-tight">
-          Cosmética natural, honesta y efectiva.
+          Cosmética natural, honesta y efectiva
         </h1>
-        <p class="mt-4 text-lg text-slate-700">
-          Fórmulas cuidadas con ingredientes de origen vegetal. Belleza real con resultados visibles.
+        <p class="mt-5 text-lg text-slate-700 max-w-xl">
+          Ingredientes de origen vegetal con respaldo científico. Piel cuidada, luminosa y confortable.
         </p>
-        <a href="#productos" class="mt-6 inline-block rounded-lg bg-brand-coral text-white px-6 py-3 font-medium hover:opacity-90">Ver productos</a>
+        <div class="mt-8 flex items-center gap-4">
+          <a href="#productos" class="rounded-full bg-brand-coral text-white px-6 py-3 font-medium hover:opacity-90">Ver productos</a>
+          <a href="#sobre" class="rounded-full border border-brand-dark text-brand-dark px-6 py-3 font-medium hover:bg-white">Conócenos</a>
+        </div>
       </div>
-      <div class="flex justify-center">
-        <img src="../assets/logo.png" alt="Identidad Victoria Caro" class="h-40 w-auto md:h-56" />
+      <div class="flex justify-center md:justify-end">
+        <div class="relative">
+          <img src="./assets/logo.png" alt="Identidad visual Victoria Caro" class="h-44 w-auto md:h-56 drop-shadow" />
+          <div class="absolute -z-10 -bottom-6 -left-6 h-40 w-40 rounded-full bg-brand-coral/10 blur-2xl"></div>
+        </div>
       </div>
     </div>
   </section>
 
   <main id="contenido">
-    <!-- Sobre -->
+    <!-- SOBRE -->
     <section id="sobre" class="mx-auto max-w-6xl px-4 py-16">
-      <h2 class="text-3xl font-bold text-brand-dark">Sobre la marca</h2>
-      <p class="mt-4 max-w-3xl">
-        En Victoria Caro defendemos la transparencia y la eficacia. Seleccionamos ingredientes naturales
-        con respaldo científico para conseguir fórmulas equilibradas y respetuosas con la piel y el planeta.
-      </p>
+      <div class="grid lg:grid-cols-3 gap-10 items-start">
+        <div class="lg:col-span-2">
+          <h2 class="text-3xl font-serif font-bold text-brand-dark">Sobre la marca</h2>
+          <p class="mt-4 text-slate-700 leading-relaxed">
+            En Victoria Caro defendemos la transparencia y la eficacia. Seleccionamos ingredientes naturales
+            con respaldo científico para conseguir fórmulas equilibradas y respetuosas con la piel y el planeta.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
+          <h3 class="font-semibold text-brand-leaf">Compromisos</h3>
+          <ul class="mt-3 space-y-2 text-sm text-brand-brown">
+            <li>• Ingredientes de origen vegetal</li>
+            <li>• Diseño responsable con la piel</li>
+            <li>• Comunicación clara y honesta</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <!-- Productos -->
+    <!-- PRODUCTOS -->
     <section id="productos" class="bg-white">
       <div class="mx-auto max-w-6xl px-4 py-16">
-        <h2 class="text-3xl font-bold text-brand-dark">Productos destacados</h2>
-        <p class="mt-2 text-slate-600">Selección inicial del catálogo. Pronto añadiremos fichas individuales.</p>
+        <div class="flex items-end justify-between gap-4">
+          <div>
+            <h2 class="text-3xl font-serif font-bold text-brand-dark">Productos destacados</h2>
+            <p class="mt-2 text-slate-600">Catálogo en crecimiento — fichas individuales muy pronto.</p>
+          </div>
+        </div>
 
         <div id="product-grid" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6" aria-live="polite" aria-busy="true">
           <!-- tarjetas inyectadas por JS -->
@@ -108,12 +150,15 @@
 
         <!-- plantilla de tarjeta -->
         <template id="product-card-tpl">
-          <article class="group rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition overflow-hidden">
+          <article class="group rounded-2xl border border-slate-200 bg-white shadow-card hover:shadow-lg transition overflow-hidden">
             <a href="#" class="block focus:outline-none focus:ring-2 focus:ring-brand-dark">
-              <img class="w-full h-56 object-cover" alt="" />
+              <div class="relative">
+                <img class="w-full h-56 object-cover transition group-hover:scale-[1.02]" alt="" />
+                <span class="absolute top-3 left-3 inline-flex items-center rounded-full bg-white/90 border border-slate-200 px-3 py-1 text-[12px] text-slate-700">Victoria Caro</span>
+              </div>
               <div class="p-4">
-                <h3 class="text-lg font-semibold text-brand-dark"></h3>
-                <p class="mt-1 text-sm text-slate-600"></p>
+                <h3 class="text-lg font-semibold text-brand-dark line-clamp-2"></h3>
+                <p class="mt-1 text-sm text-slate-600 line-clamp-2"></p>
                 <div class="mt-3 flex items-center justify-between">
                   <span class="text-brand-dark font-medium"></span>
                   <span aria-hidden="true" class="text-brand-coral group-hover:translate-x-1 transition">→</span>
@@ -125,97 +170,102 @@
       </div>
     </section>
 
-    <!-- FAQ sin JS -->
+    <!-- FAQ -->
     <section id="faq" class="mx-auto max-w-6xl px-4 py-16">
-      <h2 class="text-3xl font-bold text-brand-dark">Preguntas frecuentes</h2>
+      <h2 class="text-3xl font-serif font-bold text-brand-dark">Preguntas frecuentes</h2>
       <div class="mt-6 space-y-4">
-        <details class="rounded-lg bg-white p-4 border border-slate-200">
+        <details class="rounded-2xl bg-white p-5 border border-slate-200 shadow-sm">
           <summary class="cursor-pointer font-medium">¿Son veganos los productos?</summary>
-          <p class="mt-2 text-slate-700">Indícalo según tus fórmulas. Podemos añadir iconos “Vegan” si aplica.</p>
+          <p class="mt-2 text-slate-700">Añadiremos la indicación “Vegan”/“Cruelty-free” donde corresponda.</p>
         </details>
-        <details class="rounded-lg bg-white p-4 border border-slate-200">
+        <details class="rounded-2xl bg-white p-5 border border-slate-200 shadow-sm">
           <summary class="cursor-pointer font-medium">¿Tienen perfume?</summary>
-          <p class="mt-2 text-slate-700">Describe fragancias y posibles alérgenos (INCI) si procede.</p>
+          <p class="mt-2 text-slate-700">Especificaremos fragancias y alérgenos (INCI) en cada ficha.</p>
         </details>
       </div>
     </section>
 
-    <!-- Contacto -->
-    <section id="contacto" class="bg-white">
+    <!-- CONTACTO -->
+    <section id="contacto" class="relative">
+      <div class="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_80%_20%,#1F3D2B10,transparent)]"></div>
       <div class="mx-auto max-w-6xl px-4 py-16">
-        <h2 class="text-3xl font-bold text-brand-dark">Contacto</h2>
-        <form id="contact-form" class="mt-6 grid md:grid-cols-2 gap-6" novalidate>
-          <div>
-            <label for="name" class="block text-sm font-medium">Nombre</label>
-            <input id="name" name="name" type="text" required class="mt-1 w-full rounded-lg border-slate-300 focus:border-brand-dark focus:ring-brand-dark" />
-            <p class="mt-1 text-sm text-red-600 hidden" id="err-name">Introduce tu nombre.</p>
-          </div>
-          <div>
-            <label for="email" class="block text-sm font-medium">Email</label>
-            <input id="email" name="email" type="email" required class="mt-1 w-full rounded-lg border-slate-300 focus:border-brand-dark focus:ring-brand-dark" />
-            <p class="mt-1 text-sm text-red-600 hidden" id="err-email">Email no válido.</p>
-          </div>
-          <div class="md:col-span-2">
-            <label for="message" class="block text-sm font-medium">Mensaje</label>
-            <textarea id="message" name="message" rows="5" required class="mt-1 w-full rounded-lg border-slate-300 focus:border-brand-dark focus:ring-brand-dark"></textarea>
-            <p class="mt-1 text-sm text-red-600 hidden" id="err-message">Cuéntanos en qué podemos ayudarte.</p>
-          </div>
-          <div class="md:col-span-2">
-            <button type="submit" class="rounded-lg bg-brand-dark text-white px-6 py-3 hover:opacity-90">Enviar</button>
-            <p id="form-ok" class="mt-3 text-green-700 hidden" role="status">Formulario válido (en el MVP no se envía).</p>
-          </div>
-        </form>
+        <div class="rounded-2xl border border-slate-200 bg-white p-8 shadow-card">
+          <h2 class="text-3xl font-serif font-bold text-brand-dark">Contacto</h2>
+          <form id="contact-form" class="mt-6 grid md:grid-cols-2 gap-6" novalidate>
+            <div>
+              <label for="name" class="block text-sm font-medium">Nombre</label>
+              <input id="name" name="name" type="text" required class="mt-1 w-full rounded-xl border-slate-300 focus:border-brand-dark focus:ring-brand-dark" />
+              <p class="mt-1 text-sm text-red-600 hidden" id="err-name">Introduce tu nombre.</p>
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium">Email</label>
+              <input id="email" name="email" type="email" required class="mt-1 w-full rounded-xl border-slate-300 focus:border-brand-dark focus:ring-brand-dark" />
+              <p class="mt-1 text-sm text-red-600 hidden" id="err-email">Email no válido.</p>
+            </div>
+            <div class="md:col-span-2">
+              <label for="message" class="block text-sm font-medium">Mensaje</label>
+              <textarea id="message" name="message" rows="5" required class="mt-1 w-full rounded-xl border-slate-300 focus:border-brand-dark focus:ring-brand-dark"></textarea>
+              <p class="mt-1 text-sm text-red-600 hidden" id="err-message">Cuéntanos en qué podemos ayudarte.</p>
+            </div>
+            <div class="md:col-span-2">
+              <button type="submit" class="rounded-full bg-brand-dark text-white px-6 py-3 hover:opacity-90">Enviar</button>
+              <p id="form-ok" class="mt-3 text-green-700 hidden" role="status">Formulario válido (en el MVP no se envía).</p>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="border-t border-slate-200 bg-white">
     <div class="mx-auto max-w-6xl px-4 py-8 text-sm text-slate-600">
       <p class="font-medium text-brand-dark">Victoria Caro — Natural Cosmetics</p>
-      <p class="mt-2">Contacto: <a class="underline hover:text-brand-coral" href="mailto:hola@victoriacaro.es">hola@victoriacaro.es</a></p>
+      <p class="mt-2">Contacto: <a href="mailto:hola@victoriacaro.es" class="underline hover:text-brand-coral">hola@victoriacaro.es</a></p>
       <p class="mt-2">© <span id="year"></span> Victoria Caro. Todos los derechos reservados.</p>
     </div>
   </footer>
 
   <!-- JS mínimo -->
   <script>
-    // año actual
+    // Año footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // grid de productos desde JSON
+    // Render del grid desde JSON
     const grid = document.getElementById('product-grid');
     const tpl  = document.getElementById('product-card-tpl');
 
-    fetch('../data/products.json')
-      .then(r => r.json())
-      .then(products => {
-        grid.setAttribute('aria-busy', 'false');
-        products.forEach(p => {
-          const node = tpl.content.cloneNode(true);
-          const a    = node.querySelector('a');
-          const img  = node.querySelector('img');
-          const h3   = node.querySelector('h3');
-          const ptxt = node.querySelector('p');
-          const price= node.querySelector('.font-medium');
+    function render(products) {
+      grid.innerHTML = '';
+      products.forEach(p => {
+        const node = tpl.content.cloneNode(true);
+        const a    = node.querySelector('a');
+        const img  = node.querySelector('img');
+        const h3   = node.querySelector('h3');
+        const ptxt = node.querySelector('p');
+        const price= node.querySelector('.font-medium');
 
-          a.href         = p.url || '#';
-          img.src        = p.image;
-          img.alt        = p.alt || p.name;
-          h3.textContent = p.name;
-          ptxt.textContent= p.shortDescription;
-          price.textContent= p.price || '';
-          grid.appendChild(node);
-        });
-      })
+        a.href          = p.url || '#';
+        img.src         = p.image;
+        img.alt         = p.alt || p.name;
+        h3.textContent  = p.name;
+        ptxt.textContent= p.shortDescription;
+        price.textContent = p.price || '';
+        grid.appendChild(node);
+      });
+      grid.setAttribute('aria-busy','false');
+    }
+
+    fetch('./data/products.json')
+      .then(r => r.json())
+      .then(data => render(data))
       .catch(() => {
-        grid.setAttribute('aria-busy', 'false');
+        grid.setAttribute('aria-busy','false');
         grid.innerHTML = '<p class="text-slate-600">Añade tus productos en <code>/data/products.json</code>.</p>';
       });
 
-    // validación de formulario (sin envío real)
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', (e) => {
+    // Validación accesible del formulario
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const name  = document.getElementById('name');
       const email = document.getElementById('email');
@@ -229,8 +279,7 @@
       document.getElementById('err-email').classList.toggle('hidden', okEmail);
       document.getElementById('err-message').classList.toggle('hidden', okMsg);
 
-      const ok = okName && okEmail && okMsg;
-      document.getElementById('form-ok').classList.toggle('hidden', !ok);
+      document.getElementById('form-ok').classList.toggle('hidden', !(okName && okEmail && okMsg));
     });
   </script>
 </body>
