@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Victoria Caro · Cosmética Natural</title>
-  <meta name="description" content="Cosmética natural honesta y efectiva. Ingredientes de origen vegetal, fórmulas cuidadas y resultados visibles." />
+  <meta name="description" content="Cosmética natural honesta y efectiva. Ingredientes de origen vegetal con respaldo científico." />
   <link rel="canonical" href="https://victoriacaro.es/" />
 
   <!-- Open Graph -->
@@ -23,10 +23,11 @@
         extend: {
           colors: {
             brand: {
-              dark:  '#1F3D2B',   // verde logo (apoyo)
-              coral: '#E36A5D',   // protagonista
-              coralDeep: '#c6564b', // coral más oscuro para contrastes/hover
-              ivory: '#F9F8F6'    // fondo cálido
+              coral:      '#E36A5D',  // acento
+              coralDeep:  '#C54C42',  // predominante (fondo)
+              coralDark:  '#9E3E36',  // más oscuro (hover/bordes)
+              dark:       '#1F3D2B',  // verde bosque (complementario oscuro)
+              ivory:      '#F4F2F1'   // neutro claro si necesitas respiro
             }
           },
           fontFamily: {
@@ -34,20 +35,20 @@
             sans:  ['Inter','ui-sans-serif','system-ui','Segoe UI','Roboto','Helvetica Neue','Arial']
           },
           boxShadow: {
-            glass: '0 8px 30px rgba(0,0,0,.08)',
-            card:  '0 8px 24px rgba(227,106,93,.18)'
+            glass: '0 10px 40px rgba(0,0,0,.25)',
+            card:  '0 12px 36px rgba(229,115,100,.25)'
           }
         }
       }
     }
   </script>
-
   <style>
-    /* Foco visible y fallback si un navegador no soporta backdrop-filter */
-    :focus { outline: 2px dashed #1F3D2B; outline-offset: 2px; }
-    .glass { background-color: rgba(227,106,93,.12); }
-    @supports ((-webkit-backdrop-filter: blur(12px)) or (backdrop-filter: blur(12px))) {
-      .glass { background-color: rgba(227,106,93,.10); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+    /* Accesibilidad */
+    :focus { outline: 2px dashed #F4F2F1; outline-offset: 2px; }
+    /* Efecto glass reutilizable (con fallback) */
+    .glass { background-color: rgba(20, 14, 13, .28); border-color: rgba(244,242,241,.14); }
+    @supports ((-webkit-backdrop-filter: blur(14px)) or (backdrop-filter: blur(14px))) {
+      .glass { background-color: rgba(20, 14, 13, .22); -webkit-backdrop-filter: blur(14px) saturate(1.1); backdrop-filter: blur(14px) saturate(1.1); }
     }
   </style>
 
@@ -63,80 +64,76 @@
   }
   </script>
 </head>
-<body class="min-h-screen bg-brand-ivory text-slate-800 font-sans">
-  <!-- BG coral translúcido decorativo -->
-  <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10">
-    <div class="absolute inset-0 bg-[radial-gradient(70%_70%_at_20%_10%,#E36A5D1A,transparent),radial-gradient(60%_60%_at_85%_15%,#E36A5D26,transparent)]"></div>
+<body class="min-h-screen bg-brand-coralDeep text-white font-sans selection:bg-brand-coral/40 selection:text-white">
+  <!-- Fondos decorativos (coral) -->
+  <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-20">
+    <div class="absolute inset-0 bg-[radial-gradient(70%_70%_at_20%_10%,#E36A5D33,transparent),radial-gradient(60%_60%_at_85%_15%,#9E3E3630,transparent)]"></div>
+    <div class="absolute -left-32 bottom-0 w-[42rem] h-[42rem] rounded-full bg-brand-coral/14 blur-3xl"></div>
+    <div class="absolute -right-24 -top-20 w-[36rem] h-[36rem] rounded-full bg-brand-coralDark/20 blur-2xl"></div>
   </div>
 
   <!-- Skip link -->
-  <a href="#contenido" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white px-3 py-2 rounded shadow">Saltar al contenido</a>
+  <a href="#contenido" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white/10 backdrop-blur px-3 py-2 rounded border border-white/30">Saltar al contenido</a>
 
-  <!-- Header glass (translúcido) -->
-  <header class="sticky top-0 z-50 glass border-b border-white/40 shadow-glass">
+  <!-- Header glass oscuro -->
+  <header class="sticky top-0 z-50 glass border-b shadow-glass">
     <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
       <a href="./" class="flex items-center gap-3" aria-label="Inicio">
         <img src="./assets/logo.png" alt="Logo Victoria Caro" class="h-9 w-auto" />
-        <span class="font-semibold text-brand-dark">Victoria Caro</span>
+        <span class="font-semibold">Victoria Caro</span>
       </a>
       <nav aria-label="Principal">
-        <ul class="hidden md:flex gap-6">
-          <li><a class="hover:text-brand-coralDeep" href="#sobre">Sobre</a></li>
-          <li><a class="hover:text-brand-coralDeep" href="#productos">Productos</a></li>
-          <li><a class="hover:text-brand-coralDeep" href="#faq">FAQ</a></li>
-          <li><a class="hover:text-brand-coralDeep" href="#contacto">Contacto</a></li>
+        <ul class="hidden md:flex gap-6 text-white/90">
+          <li><a class="hover:text-brand-coral" href="#sobre">Sobre</a></li>
+          <li><a class="hover:text-brand-coral" href="#productos">Productos</a></li>
+          <li><a class="hover:text-brand-coral" href="#faq">FAQ</a></li>
+          <li><a class="hover:text-brand-coral" href="#contacto">Contacto</a></li>
         </ul>
       </nav>
-      <a href="#contacto" class="hidden md:inline-block rounded-full bg-brand-coral text-white px-4 py-2 text-sm hover:bg-brand-coralDeep">Escríbenos</a>
+      <a href="#contacto" class="hidden md:inline-block rounded-full bg-brand-coral text-white px-4 py-2 text-sm hover:bg-brand-coralDark">Escríbenos</a>
     </div>
   </header>
 
-  <!-- HERO con coral predominante y velos -->
+  <!-- HERO (coral oscuro + glass) -->
   <section id="hero" class="relative overflow-hidden">
-    <!-- velo coral -->
-    <div aria-hidden="true" class="absolute inset-0 -z-10">
-      <div class="absolute -right-32 -top-20 w-[44rem] h-[44rem] rounded-full bg-brand-coral/15 blur-3xl"></div>
-      <div class="absolute -left-24 top-32 w-[28rem] h-[28rem] rounded-full bg-brand-coral/10 blur-2xl"></div>
-    </div>
-
     <div class="relative mx-auto max-w-6xl px-4 py-20 grid md:grid-cols-2 gap-10 items-center">
       <div class="glass rounded-3xl p-8 shadow-card">
-        <h1 class="text-4xl md:text-5xl font-serif text-brand-dark leading-tight">
-          Cosmética natural con alma coral
+        <h1 class="text-4xl md:text-5xl font-serif leading-tight">
+          Belleza natural, carácter coral
         </h1>
-        <p class="mt-5 text-lg text-slate-700">
+        <p class="mt-5 text-lg text-white/90">
           Ingredientes de origen vegetal con respaldo científico. Piel luminosa, firme e hidratada.
         </p>
         <div class="mt-8 flex items-center gap-4">
-          <a href="#productos" class="rounded-full bg-brand-coral text-white px-6 py-3 font-medium hover:bg-brand-coralDeep">Ver productos</a>
-          <a href="#sobre" class="rounded-full border border-brand-coral text-brand-coral px-6 py-3 font-medium hover:bg-white/70">Conócenos</a>
+          <a href="#productos" class="rounded-full bg-brand-coral text-white px-6 py-3 font-medium hover:bg-brand-coralDark">Ver productos</a>
+          <a href="#sobre" class="rounded-full border border-white/30 text-white px-6 py-3 font-medium hover:bg-white/10">Conócenos</a>
         </div>
       </div>
 
       <div class="flex justify-center md:justify-end">
         <div class="relative">
           <img src="./assets/logo.png" alt="Identidad visual Victoria Caro" class="h-44 w-auto md:h-56 drop-shadow" />
-          <!-- halo coral translúcido -->
-          <div class="absolute -z-10 -bottom-6 -left-6 h-44 w-44 rounded-full bg-brand-coral/20 blur-2xl"></div>
+          <!-- halo -->
+          <div class="absolute -z-10 -bottom-6 -left-6 h-44 w-44 rounded-full bg-brand-coral/25 blur-2xl"></div>
         </div>
       </div>
     </div>
   </section>
 
   <main id="contenido">
-    <!-- SOBRE -->
+    <!-- SOBRE (panel glass) -->
     <section id="sobre" class="mx-auto max-w-6xl px-4 py-16">
       <div class="grid lg:grid-cols-3 gap-10 items-start">
         <div class="lg:col-span-2">
-          <h2 class="text-3xl font-serif font-bold text-brand-dark">Sobre la marca</h2>
-          <p class="mt-4 text-slate-700 leading-relaxed">
+          <h2 class="text-3xl font-serif font-bold">Sobre la marca</h2>
+          <p class="mt-4 text-white/90 leading-relaxed">
             En Victoria Caro defendemos la transparencia y la eficacia. Seleccionamos ingredientes naturales
             con respaldo científico para conseguir fórmulas equilibradas y respetuosas con la piel y el planeta.
           </p>
         </div>
         <div class="glass rounded-2xl p-6 shadow-card">
-          <h3 class="font-semibold text-brand-dark">Nuestros principios</h3>
-          <ul class="mt-3 space-y-2 text-sm text-slate-700">
+          <h3 class="font-semibold">Nuestros principios</h3>
+          <ul class="mt-3 space-y-2 text-sm text-white/90">
             <li>• Ingredientes de origen vegetal</li>
             <li>• Belleza honesta y efectiva</li>
             <li>• Diseño responsable con la piel</li>
@@ -145,15 +142,14 @@
       </div>
     </section>
 
-    <!-- PRODUCTOS (tarjetas con overlay coral translúcido) -->
+    <!-- PRODUCTOS (dark cards + overlays) -->
     <section id="productos" class="relative">
-      <div class="absolute inset-0 -z-10 bg-[radial-gradient(50%_50%_at_80%_20%,#E36A5D1A,transparent)]"></div>
-
+      <div class="absolute inset-0 -z-10 bg-[radial-gradient(50%_50%_at_80%_20%,#9E3E3630,transparent)]"></div>
       <div class="mx-auto max-w-6xl px-4 py-16">
         <div class="flex items-end justify-between gap-4">
           <div>
-            <h2 class="text-3xl font-serif font-bold text-brand-dark">Productos destacados</h2>
-            <p class="mt-2 text-slate-700">Catálogo en crecimiento — fichas individuales muy pronto.</p>
+            <h2 class="text-3xl font-serif font-bold">Productos destacados</h2>
+            <p class="mt-2 text-white/80">Catálogo en crecimiento — fichas individuales muy pronto.</p>
           </div>
         </div>
 
@@ -161,21 +157,23 @@
           <!-- Tarjetas generadas por JS -->
         </div>
 
-        <!-- plantilla -->
+        <!-- Plantilla de tarjeta -->
         <template id="product-card-tpl">
-          <article class="relative group rounded-3xl overflow-hidden border border-white/60 bg-white/60 shadow-card">
+          <article class="relative group rounded-3xl overflow-hidden border border-white/15 bg-white/[.06] shadow-card">
             <a href="#" class="block focus:outline-none focus:ring-2 focus:ring-brand-coral">
               <div class="relative">
                 <img class="w-full h-56 object-cover" alt="" />
-                <!-- velo coral al pasar -->
+                <!-- overlay gradiente para legibilidad -->
+                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent"></div>
+                <!-- velo coral al hover -->
                 <div class="pointer-events-none absolute inset-0 bg-brand-coral/0 transition group-hover:bg-brand-coral/10"></div>
-                <span class="absolute top-3 left-3 inline-flex items-center rounded-full bg-white/80 border border-white/70 px-3 py-1 text-[12px] text-slate-700 shadow">Victoria Caro</span>
+                <span class="absolute top-3 left-3 inline-flex items-center rounded-full bg-black/30 backdrop-blur px-3 py-1 text-[12px] text-white border border-white/20 shadow">Victoria Caro</span>
               </div>
               <div class="p-5">
-                <h3 class="text-lg font-semibold text-brand-dark line-clamp-2"></h3>
-                <p class="mt-1 text-sm text-slate-700 line-clamp-2"></p>
+                <h3 class="text-lg font-semibold line-clamp-2"></h3>
+                <p class="mt-1 text-sm text-white/85 line-clamp-2"></p>
                 <div class="mt-3 flex items-center justify-between">
-                  <span class="text-brand-dark font-medium"></span>
+                  <span class="font-medium"></span>
                   <span aria-hidden="true" class="text-brand-coral group-hover:translate-x-1 transition">→</span>
                 </div>
               </div>
@@ -185,49 +183,51 @@
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ (glass oscuro) -->
     <section id="faq" class="mx-auto max-w-6xl px-4 py-16">
-      <h2 class="text-3xl font-serif font-bold text-brand-dark">Preguntas frecuentes</h2>
+      <h2 class="text-3xl font-serif font-bold">Preguntas frecuentes</h2>
       <div class="mt-6 space-y-4">
-        <details class="glass rounded-2xl p-5 shadow">
+        <details class="glass rounded-2xl p-5 shadow-glass">
           <summary class="cursor-pointer font-medium">¿Son veganos los productos?</summary>
-          <p class="mt-2 text-slate-700">Añadiremos la indicación “Vegan”/“Cruelty-free” donde corresponda.</p>
+          <p class="mt-2 text-white/90">Añadiremos la indicación “Vegan”/“Cruelty-free” donde corresponda.</p>
         </details>
-        <details class="glass rounded-2xl p-5 shadow">
+        <details class="glass rounded-2xl p-5 shadow-glass">
           <summary class="cursor-pointer font-medium">¿Tienen perfume?</summary>
-          <p class="mt-2 text-slate-700">Especificaremos fragancias y alérgenos (INCI) en cada ficha.</p>
+          <p class="mt-2 text-white/90">Especificaremos fragancias y alérgenos (INCI) en cada ficha.</p>
         </details>
       </div>
     </section>
 
-    <!-- CONTACTO (tarjeta glass coral) -->
+    <!-- CONTACTO (panel glass) -->
     <section id="contacto" class="relative">
-      <div class="absolute inset-0 -z-10 bg-[radial-gradient(70%_70%_at_30%_80%,#E36A5D1A,transparent)]"></div>
       <div class="mx-auto max-w-6xl px-4 py-16">
-        <div class="glass rounded-3xl p-8 shadow-card border border-white/50">
-          <h2 class="text-3xl font-serif font-bold text-brand-dark">Contacto</h2>
+        <div class="glass rounded-3xl p-8 shadow-card border">
+          <h2 class="text-3xl font-serif font-bold">Contacto</h2>
           <form id="contact-form" class="mt-6 grid md:grid-cols-2 gap-6" novalidate>
             <div>
               <label for="name" class="block text-sm font-medium">Nombre</label>
               <input id="name" name="name" type="text" required
-                     class="mt-1 w-full rounded-xl border-slate-300/70 bg-white/70 focus:border-brand-coral focus:ring-brand-coral" />
-              <p class="mt-1 text-sm text-red-600 hidden" id="err-name">Introduce tu nombre.</p>
+                     class="mt-1 w-full rounded-xl border-white/20 bg-white/10 text-white placeholder-white/60
+                            focus:border-brand-coral focus:ring-brand-coral" placeholder="Tu nombre" />
+              <p class="mt-1 text-sm text-red-300 hidden" id="err-name">Introduce tu nombre.</p>
             </div>
             <div>
               <label for="email" class="block text-sm font-medium">Email</label>
               <input id="email" name="email" type="email" required
-                     class="mt-1 w-full rounded-xl border-slate-300/70 bg-white/70 focus:border-brand-coral focus:ring-brand-coral" />
-              <p class="mt-1 text-sm text-red-600 hidden" id="err-email">Email no válido.</p>
+                     class="mt-1 w-full rounded-xl border-white/20 bg-white/10 text-white placeholder-white/60
+                            focus:border-brand-coral focus:ring-brand-coral" placeholder="nombre@correo.com" />
+              <p class="mt-1 text-sm text-red-300 hidden" id="err-email">Email no válido.</p>
             </div>
             <div class="md:col-span-2">
               <label for="message" class="block text-sm font-medium">Mensaje</label>
               <textarea id="message" name="message" rows="5" required
-                        class="mt-1 w-full rounded-xl border-slate-300/70 bg-white/70 focus:border-brand-coral focus:ring-brand-coral"></textarea>
-              <p class="mt-1 text-sm text-red-600 hidden" id="err-message">Cuéntanos en qué podemos ayudarte.</p>
+                        class="mt-1 w-full rounded-xl border-white/20 bg-white/10 text-white placeholder-white/60
+                               focus:border-brand-coral focus:ring-brand-coral" placeholder="¿En qué podemos ayudarte?"></textarea>
+              <p class="mt-1 text-sm text-red-300 hidden" id="err-message">Cuéntanos en qué podemos ayudarte.</p>
             </div>
             <div class="md:col-span-2">
-              <button type="submit" class="rounded-full bg-brand-coral text-white px-6 py-3 hover:bg-brand-coralDeep">Enviar</button>
-              <p id="form-ok" class="mt-3 text-green-700 hidden" role="status">Formulario válido (en el MVP no se envía).</p>
+              <button type="submit" class="rounded-full bg-brand-coral text-white px-6 py-3 hover:bg-brand-coralDark">Enviar</button>
+              <p id="form-ok" class="mt-3 text-emerald-300 hidden" role="status">Formulario válido (en el MVP no se envía).</p>
             </div>
           </form>
         </div>
@@ -235,11 +235,11 @@
     </section>
   </main>
 
-  <!-- FOOTER translúcido -->
-  <footer class="glass border-t border-white/40">
-    <div class="mx-auto max-w-6xl px-4 py-8 text-sm text-slate-700">
-      <p class="font-medium text-brand-dark">Victoria Caro — Natural Cosmetics</p>
-      <p class="mt-2">Contacto: <a href="mailto:hola@victoriacaro.es" class="underline text-brand-coral hover:text-brand-coralDeep">hola@victoriacaro.es</a></p>
+  <!-- FOOTER -->
+  <footer class="glass border-t">
+    <div class="mx-auto max-w-6xl px-4 py-8 text-sm text-white/85">
+      <p class="font-medium">Victoria Caro — Natural Cosmetics</p>
+      <p class="mt-2">Contacto: <a href="mailto:hola@victoriacaro.es" class="underline text-brand-coral hover:text-brand-coralDark">hola@victoriacaro.es</a></p>
       <p class="mt-2">© <span id="year"></span> Victoria Caro. Todos los derechos reservados.</p>
     </div>
   </footer>
@@ -275,7 +275,7 @@
       .catch(err => {
         console.error('No se pudo cargar el catálogo:', err);
         grid.setAttribute('aria-busy','false');
-        grid.innerHTML = '<p class="text-slate-700">No se pudo cargar <code>data/products.json</code>. Revisa la ruta y el JSON.</p>';
+        grid.innerHTML = '<p class="text-white/85">No se pudo cargar <code>data/products.json</code>. Revisa la ruta y el JSON.</p>';
       });
 
     // Validación accesible del formulario
